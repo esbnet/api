@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import { Tweet, TweetSchema } from './tweet.entity';
 
-
 describe('Tweet Tests', () => {
   describe('Tweet Class', () => {
     it('should be able to create a new Tweet', () => {

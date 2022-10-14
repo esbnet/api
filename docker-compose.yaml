@@ -6,7 +6,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - .:/home/esbdev/dev/api
+      - .:/home/node/api
     depends_on:
       - db
 
@@ -14,9 +14,19 @@ services:
     image: mongo:6.0.2
     ports:
       - 27017:27017
+    volumes:
+      - ./.docker/dbdata:/data/db
     environment: 
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=root
+
+  db_test:
+    image: mongo:6.0.2
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    tmpfs:
+      - /data/db
 
   mongo-express:
     image: mongo-express
